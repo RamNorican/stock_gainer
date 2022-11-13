@@ -1,0 +1,9 @@
+setup.py
+modules/__init__.py
+modules/client.py
+modules/scrapper.py
+stock_scrapper.egg-info/PKG-INFO
+stock_scrapper.egg-info/SOURCES.txt
+stock_scrapper.egg-info/dependency_links.txt
+stock_scrapper.egg-info/requires.txt
+stock_scrapper.egg-info/top_level.txt
