@@ -16,7 +16,9 @@ class Scrapper():
         self.service_type = endpoint
 
     async def scrape(self) -> bs4.BeautifulSoup:
-        client = Client(self.url)
+        client = Client(
+            url=self.url, query_parameters={"count": 100, "offset": 0}
+        )
         html_text = await client.connect("get")
         soup = bs4.BeautifulSoup(html_text, features='html.parser')
         return soup

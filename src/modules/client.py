@@ -3,9 +3,11 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class Client(object):
-    def __init__(self, url) -> None:
-        self.url = url
+    def __init__(self, **kwargs) -> None:
+        self.url = kwargs.get("url")
+        self.query_parameters = kwargs.get("query_parameters")
 
     async def get_request(self):
         header = {
@@ -15,7 +17,10 @@ class Client(object):
         try:
             async with httpx.AsyncClient() as session:
                 # await until the response is received
-                response = await session.get(self.url, headers=header)
+                params = self.query_parameters
+                response = await session.get(
+                    self.url, headers=header, params=params
+                )
                 if response.status_code == 200:
                     return response.text
         except httpx.ConnectError as e:
