@@ -1,6 +1,6 @@
 
 import bs4
-from client import Client
+from modules.client import Client
 import logging
 # get from the chrome web tools console navigator.userAgent
 

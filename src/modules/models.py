@@ -37,6 +37,7 @@ class ApiResponse:
     results: List[CharacterSchema]
 
     def __post_init__(self):
-        self.results = [CharacterSchema(**schema) for schema in self.results]
-
-
+        if self.results is not None:
+            self.results = [
+                CharacterSchema(**schema) for schema in self.results
+            ]

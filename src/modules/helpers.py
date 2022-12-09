@@ -1,6 +1,6 @@
 import re
 
-response_keys = {
+RESPONSE_KEYS = {
     'Symbol': 'Symbol',
     'Name': 'Name',
     'Price (Intraday)': 'Price',
@@ -27,11 +27,13 @@ def special_str_to_int(res_dict):
     return res_dict
 
 
-def update_keys(result_keys):
-    for key, val in response_keys.items():
+def update_keys(result_keys: dict):
+    """
+    The response keys are renamed to standard names as per RESPONSE KEYS
+    """
+    for key, val in RESPONSE_KEYS.items():
         if key != val:
             result_keys[val] = result_keys[key]
             result_keys.pop(key)
     return result_keys
-
 

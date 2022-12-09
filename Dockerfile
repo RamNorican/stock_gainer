@@ -16,4 +16,4 @@ COPY . ./
 RUN pip install ./src
 # Install production dependencies.
 #RUN pip install --no-cache-dir -r requirements.txt
-CMD [ "/bin/sh" ]
+CMD [ "python main_app.py" ]
