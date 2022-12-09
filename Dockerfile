@@ -5,15 +5,13 @@ FROM python:3.10-slim
 # Allow statements and log messages to immediately appear in the Knative logs
 ENV PYTHONUNBUFFERED True
 
+RUN mkdir /src
 
-# Copy local code to the container image.
-ENV APP_HOME /src
-
-WORKDIR $APP_HOME
-
-COPY . ./
+COPY ./src ./src
 
 RUN pip install ./src
+
+WORKDIR /src
 # Install production dependencies.
 #RUN pip install --no-cache-dir -r requirements.txt
-CMD [ "python main_app.py" ]
+CMD [ "python", "main_app.py" ]
